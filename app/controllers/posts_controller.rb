@@ -1,6 +1,8 @@
 class PostsController < ApplicationController
   def show
     @post = Post.find(params[:id])
+    @users = []
+    @post.users.each { |user| @users << user if !@users.any?(user) }
   end
 
   def index
